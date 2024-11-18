@@ -2,7 +2,9 @@ import React from 'react'
 
 function Inicio() {
   return (
-    <div></div>
+    <div>
+         
+    </div>
   )
 }
 
