@@ -1,10 +1,14 @@
 import React from 'react'
-import Inicio from '../Inicio/Inicio'
+import Inicio from '../Datos/Inicio';
+import {Router, Route } from 'react-router-dom';
+
 
 function rutas() {
   return (
-    <Inicio/>
-  )
+    <>
+        <Inicio />
+    </>
+  );
 }
 
-export default rutas
+export default rutas;
