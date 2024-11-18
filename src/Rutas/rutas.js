@@ -1,13 +1,14 @@
 import React from 'react'
 import Inicio from '../Datos/Inicio';
-import {Router, Route } from 'react-router-dom';
+import {Routes, Route } from 'react-router-dom';
 
 
 function rutas() {
   return (
-    <>
-        <Inicio />
-    </>
+    <Routes>
+        <Route path='/inicio' element={<Inicio/>} />
+        
+    </Routes>
   );
 }
 
