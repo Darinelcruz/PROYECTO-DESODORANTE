@@ -2,8 +2,8 @@ import React from 'react'
 
 function Inicio() {
   return (
-    <div>Inicio</div>
+    <div></div>
   )
 }
 
-export default Inicio
+export default Inicio;
