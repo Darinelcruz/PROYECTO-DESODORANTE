@@ -15,7 +15,7 @@ function Menu() {
           <Link class="nav-link active" aria-current="Inicio" to="/inicio">Inicio</Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link" to="/Tabla">Tabla</Link>
+          <Link class="nav-link" to="/calificaciones">Calificaciones</Link>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
