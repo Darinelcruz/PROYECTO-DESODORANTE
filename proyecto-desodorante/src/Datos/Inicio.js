@@ -31,11 +31,7 @@ function Inicio() {
   style={{ backgroundColor: "gray", color: "black", border: "2", padding: "5px 5px" }}
 >
   Mas informacion
-</button>
-
-          </Link>{" "}
-        </li>
-      ,
+</button></Link></li>,
     },
 
 
@@ -52,11 +48,9 @@ function Inicio() {
   style={{ backgroundColor: "gray", color: "black", border: "2", padding: "5px 5px" }}
 >
   Mas informacion
-</button>          </Link>{" "}
-        </li>
+</button></Link></li>
       ,
     },
-
 
 
     {
@@ -71,9 +65,7 @@ function Inicio() {
   style={{ backgroundColor: "gray", color: "black", border: "2", padding: "5px 5px" }}
 >
   Mas informacion
-</button>          </Link>
-        </li>
-      ,
+</button></Link></li>
     },
 
     {
@@ -88,9 +80,7 @@ function Inicio() {
     style={{ backgroundColor: "gray", color: "black", border: "2", padding: "5px 5px" }}
   >
     Mas informacion
-  </button>          </Link>
-          </li>
-        ,
+  </button></Link></li>
       },
   ];
 
