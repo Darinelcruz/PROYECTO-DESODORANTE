@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Tabla() {
     const [datos, setDatos] = useState([]);
@@ -8,7 +9,7 @@ function Tabla() {
         fragancia: "",
         caracteristicas: ""
     });
-    const [editIndex, setEditIndex] = useState(null); 
+    const [editIndex, setEditIndex] = useState(null);
 
     const agregarDesodorante = () => {
         if (nuevoDesodorante.marca && nuevoDesodorante.tipo && nuevoDesodorante.fragancia && nuevoDesodorante.caracteristicas) {
@@ -16,11 +17,11 @@ function Tabla() {
                 const datosActualizados = [...datos];
                 datosActualizados[editIndex] = nuevoDesodorante;
                 setDatos(datosActualizados);
-                setEditIndex(null); 
+                setEditIndex(null);
             } else {
                 setDatos([...datos, nuevoDesodorante]);
             }
-            setNuevoDesodorante({ marca: "", tipo: "", fragancia: "", caracteristicas: "" }); // Limpiar campos
+            setNuevoDesodorante({ marca: "", tipo: "", fragancia: "", caracteristicas: "" });
         } else {
             alert("Por favor, complete todos los campos.");
         }
@@ -39,7 +40,7 @@ function Tabla() {
     const editarDesodorante = (index) => {
         const desodorante = datos[index];
         setNuevoDesodorante(desodorante);
-        setEditIndex(index); 
+        setEditIndex(index);
     };
 
     return (
