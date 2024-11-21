@@ -2,16 +2,17 @@ import React from 'react'
 import Inicio from '../Datos/Inicio';
 import Tabla from '../Datos/Tabla';
 import Perfumes from '../Datos/Perfumes';
-import {Router, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 
 function rutas() {
   return (
-    <>
-        <Inicio />
-        <Tabla />
-    </>
-  ); 
+    <Routes>
+
+      <Route path='/Tabla' element= {<Tabla/>} />
+
+    </Routes>
+  );
 }
 
 export default rutas;
