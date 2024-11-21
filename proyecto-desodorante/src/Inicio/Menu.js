@@ -28,13 +28,11 @@ function Menu() {
                   <li><hr class="dropdown-divider" /></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                   {/* Nuevas opciones */}
-                  <li><Link className="dropdown-item" to="/opcion1">New Option 1</Link></li>
-                  <li><Link className="dropdown-item" to="/opcion2">New Option 2</Link></li>
-                  <li><Link className="dropdown-item" to="/opcion3">New Option 3</Link></li>
+                  <li><Link className="dropdown-item" to="/opcion1">Perfumes</Link></li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                <Link class="nav-link" to="/perfumes">Perfumes</Link>
               </li>
             </ul>
             <form class="d-flex" role="search">
