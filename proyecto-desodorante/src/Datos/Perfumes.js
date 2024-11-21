@@ -1,5 +1,9 @@
 import React from 'react';
 
+import AquaDiGio from '../imagenes/aqua_di_gio.jpg';
+import PerfumeVersaceEros from '../imagenes/perfume_versace_eros.webp';
+import SauvageDior from '../imagenes/sauvage_dior.webp';
+
 function Perfumes() {
   const perfumes = [
     {
@@ -9,7 +13,7 @@ function Perfumes() {
       duration: '8 horas',
       fragrance: 'Cítrica y amaderada',
       price: 1200,
-      image: '/images/aqua_di_gio.jpg', // Ruta correcta
+      image: AquaDiGio,
     },
     {
       id: 2,
@@ -18,7 +22,7 @@ function Perfumes() {
       duration: '10 horas',
       fragrance: 'Fresca y especiada',
       price: 1500,
-      image: '/images/perfume_versace_eros.webp', // Ruta correcta
+      image: PerfumeVersaceEros,
     },
     {
       id: 3,
@@ -27,7 +31,7 @@ function Perfumes() {
       duration: '12 horas',
       fragrance: 'Amaderada y aromática',
       price: 1800,
-      image: '/images/sauvage_dior.webp', // Ruta correcta
+      image: SauvageDior,
     },
   ];
 
@@ -48,7 +52,7 @@ function Perfumes() {
               height: 100vh;
               margin: 0;
               padding: 20px;
-              background-color: #f4f4f4;
+              background-color: #f4f4f4; /* Fondo gris claro */
             }
             table {
               border-collapse: collapse;
@@ -116,25 +120,27 @@ function Perfumes() {
   };
 
   return (
-    <div className="container mt-5">
-      <h1 className="text-center mb-4">Perfumes</h1>
-      <div className="row">
-        {perfumes.map((perfume) => (
-          <div className="col-md-4 mb-4" key={perfume.id}>
-            <div className="card text-center">
-              <img src={perfume.image} className="card-img-top" alt={perfume.name} />
-              <div className="card-body">
-                <h5 className="card-title">{perfume.name}</h5>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => openDetailsPage(perfume)}
-                >
-                  Más detalles
-                </button>
+    <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh', padding: '20px' }}>
+      <div className="container mt-5">
+        <h1 className="text-center mb-4">Perfumes</h1>
+        <div className="row">
+          {perfumes.map((perfume) => (
+            <div className="col-md-4 mb-4" key={perfume.id}>
+              <div className="card text-center">
+                <img src={perfume.image} className="card-img-top" alt={perfume.name} />
+                <div className="card-body">
+                  <h5 className="card-title">{perfume.name}</h5>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => openDetailsPage(perfume)}
+                  >
+                    Más detalles
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
