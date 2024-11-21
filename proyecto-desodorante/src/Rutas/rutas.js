@@ -10,6 +10,7 @@ function rutas() {
     <Routes>
 
       <Route path='/Tabla' element= {<Tabla/>} />
+      <Route path='/perfumes' element= {<Perfumes/>} />
 
     </Routes>
   );

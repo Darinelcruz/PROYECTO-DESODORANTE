@@ -2,10 +2,118 @@ import React from 'react';
 
 function Perfumes() {
   const perfumes = [
-    { id: 1, name: 'Aqua di gio', image: 'proyecto-desodorante/src/Imagenes/aqua di gio.jpg', details: 'Detalles del Perfume 1' },
-    { id: 2, name: 'eros versace', image: 'proyecto-desodorante/src/Imagenes/perfume versace eros.webp', details: 'Detalles del Perfume 2' },
-    { id: 3, name: 'sauvage dior', image: 'proyecto-desodorante/src/Imagenes/sauvage dior.webp', details: 'Detalles del Perfume 3' },
+    {
+      id: 1,
+      name: 'Aqua di gio',
+      brand: 'Giorgio Armani',
+      duration: '8 horas',
+      fragrance: 'Cítrica y amaderada',
+      price: 1200,
+      image: '/images/aqua_di_gio.jpg', // Ruta correcta
+    },
+    {
+      id: 2,
+      name: 'Eros Versace',
+      brand: 'Versace',
+      duration: '10 horas',
+      fragrance: 'Fresca y especiada',
+      price: 1500,
+      image: '/images/perfume_versace_eros.webp', // Ruta correcta
+    },
+    {
+      id: 3,
+      name: 'Sauvage Dior',
+      brand: 'Dior',
+      duration: '12 horas',
+      fragrance: 'Amaderada y aromática',
+      price: 1800,
+      image: '/images/sauvage_dior.webp', // Ruta correcta
+    },
   ];
+
+  const openDetailsPage = (perfume) => {
+    const newWindow = window.open('', '_blank');
+
+    newWindow.document.write(`
+      <html>
+        <head>
+          <title>${perfume.name}</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              height: 100vh;
+              margin: 0;
+              padding: 20px;
+              background-color: #f4f4f4;
+            }
+            table {
+              border-collapse: collapse;
+              width: 60%;
+              margin-top: 20px;
+              background-color: white;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            th, td {
+              border: 1px solid #ddd;
+              text-align: left;
+              padding: 8px;
+            }
+            th {
+              background-color: #007bff;
+              color: white;
+            }
+            img {
+              max-width: 300px;
+              margin-bottom: 20px;
+            }
+            .btn {
+              padding: 10px 20px;
+              background-color: #007bff;
+              color: white;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              margin-top: 20px;
+            }
+            .btn:hover {
+              background-color: #0056b3;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>${perfume.name}</h1>
+          <img src="${perfume.image}" alt="${perfume.name}" />
+          <table>
+            <tr>
+              <th>Característica</th>
+              <th>Detalle</th>
+            </tr>
+            <tr>
+              <td>Marca</td>
+              <td>${perfume.brand}</td>
+            </tr>
+            <tr>
+              <td>Duración</td>
+              <td>${perfume.duration}</td>
+            </tr>
+            <tr>
+              <td>Fragancia</td>
+              <td>${perfume.fragrance}</td>
+            </tr>
+            <tr>
+              <td>Precio</td>
+              <td>$${perfume.price}</td>
+            </tr>
+          </table>
+          <button class="btn" onclick="window.close()">Regresar a la sección de perfumes</button>
+        </body>
+      </html>
+    `);
+  };
 
   return (
     <div className="container mt-5">
@@ -19,7 +127,7 @@ function Perfumes() {
                 <h5 className="card-title">{perfume.name}</h5>
                 <button
                   className="btn btn-primary"
-                  onClick={() => alert(perfume.details)}
+                  onClick={() => openDetailsPage(perfume)}
                 >
                   Más detalles
                 </button>
