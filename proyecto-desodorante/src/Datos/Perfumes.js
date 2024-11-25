@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import AquaDiGio from '../imagenes/aqua_di_gio.jpg';
 import PerfumeVersaceEros from '../imagenes/perfume_versace_eros.webp';
 import SauvageDior from '../imagenes/sauvage_dior.webp';
 
 function Perfumes() {
+  const [selectedPerfume, setSelectedPerfume] = useState(null);
+
   const perfumes = [
     {
       id: 1,
@@ -35,90 +37,6 @@ function Perfumes() {
     },
   ];
 
-  const openDetailsPage = (perfume) => {
-    const newWindow = window.open('', '_blank');
-
-    newWindow.document.write(`
-      <html>
-        <head>
-          <title>${perfume.name}</title>
-          <style>
-            body {
-              font-family: Arial, sans-serif;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              height: 100vh;
-              margin: 0;
-              padding: 20px;
-              background-color: #f4f4f4; /* Fondo gris claro */
-            }
-            table {
-              border-collapse: collapse;
-              width: 60%;
-              margin-top: 20px;
-              background-color: white;
-              box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
-            th, td {
-              border: 1px solid #ddd;
-              text-align: left;
-              padding: 8px;
-            }
-            th {
-              background-color: #007bff;
-              color: white;
-            }
-            img {
-              max-width: 300px;
-              margin-bottom: 20px;
-            }
-            .btn {
-              padding: 10px 20px;
-              background-color: #007bff;
-              color: white;
-              border: none;
-              border-radius: 5px;
-              cursor: pointer;
-              margin-top: 20px;
-            }
-            .btn:hover {
-              background-color: #0056b3;
-            }
-          </style>
-        </head>
-        <body>
-          <h1>${perfume.name}</h1>
-          <img src="${perfume.image}" alt="${perfume.name}" />
-          <table>
-            <tr>
-              <th>Característica</th>
-              <th>Detalle</th>
-            </tr>
-            <tr>
-              <td>Marca</td>
-              <td>${perfume.brand}</td>
-            </tr>
-            <tr>
-              <td>Duración</td>
-              <td>${perfume.duration}</td>
-            </tr>
-            <tr>
-              <td>Fragancia</td>
-              <td>${perfume.fragrance}</td>
-            </tr>
-            <tr>
-              <td>Precio</td>
-              <td>$${perfume.price}</td>
-            </tr>
-          </table>
-          <button class="btn" onclick="window.close()">Regresar a la sección de perfumes</button>
-        </body>
-      </html>
-    `);
-  };
-
   return (
     <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh', padding: '20px' }}>
       <div className="container mt-5">
@@ -132,7 +50,7 @@ function Perfumes() {
                   <h5 className="card-title">{perfume.name}</h5>
                   <button
                     className="btn btn-primary"
-                    onClick={() => openDetailsPage(perfume)}
+                    onClick={() => setSelectedPerfume(perfume)}
                   >
                     Más detalles
                   </button>
@@ -142,9 +60,68 @@ function Perfumes() {
           ))}
         </div>
       </div>
+
+      {selectedPerfume && (
+        <div
+          className="modal fade show d-block"
+          tabIndex="-1"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+          role="dialog"
+          onClick={() => setSelectedPerfume(null)}
+        >
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <div className="modal-header">
+                <h5 className="modal-title">{selectedPerfume.name}</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={() => setSelectedPerfume(null)}
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body text-center">
+                <img
+                  src={selectedPerfume.image}
+                  alt={selectedPerfume.name}
+                  style={{ maxWidth: '100%', marginBottom: '20px' }}
+                />
+                <table className="table">
+                  <tbody>
+                    <tr>
+                      <th>Marca</th>
+                      <td>{selectedPerfume.brand}</td>
+                    </tr>
+                    <tr>
+                      <th>Duración</th>
+                      <td>{selectedPerfume.duration}</td>
+                    </tr>
+                    <tr>
+                      <th>Fragancia</th>
+                      <td>{selectedPerfume.fragrance}</td>
+                    </tr>
+                    <tr>
+                      <th>Precio</th>
+                      <td>${selectedPerfume.price}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setSelectedPerfume(null)}
+                >
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
 export default Perfumes;
-
