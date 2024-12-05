@@ -1,41 +1,15 @@
-import React, { useState } from 'react';
-
-import AquaDiGio from '../imagenes/aqua_di_gio.jpg';
-import PerfumeVersaceEros from '../imagenes/perfume_versace_eros.webp';
-import SauvageDior from '../imagenes/sauvage_dior.webp';
+import React, { useState, useEffect } from 'react';
 
 function Perfumes() {
   const [selectedPerfume, setSelectedPerfume] = useState(null);
+  const [perfumes, setPerfumes] = useState([]);
 
-  const perfumes = [
-    {
-      id: 1,
-      name: 'Aqua di gio',
-      brand: 'Giorgio Armani',
-      duration: '8 horas',
-      fragrance: 'Cítrica y amaderada',
-      price: 1200,
-      image: AquaDiGio,
-    },
-    {
-      id: 2,
-      name: 'Eros Versace',
-      brand: 'Versace',
-      duration: '10 horas',
-      fragrance: 'Fresca y especiada',
-      price: 1500,
-      image: PerfumeVersaceEros,
-    },
-    {
-      id: 3,
-      name: 'Sauvage Dior',
-      brand: 'Dior',
-      duration: '12 horas',
-      fragrance: 'Amaderada y aromática',
-      price: 1800,
-      image: SauvageDior,
-    },
-  ];
+  // Obtener los perfumes desde el servidor Express
+  useEffect(() => {
+    fetch('http://localhost:3001/api/perfumes')
+      .then((response) => response.json())
+      .then((data) => setPerfumes(data));
+  }, []);
 
   return (
     <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh', padding: '20px' }}>
